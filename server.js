@@ -19,8 +19,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-
-//If on heroku use deployed database; if local use mongoHeadlines
+//If on heroku use deployed database if local
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI);
 
@@ -28,7 +27,7 @@ mongoose.connect(MONGODB_URI);
 //Scrape 
 app.get("/scrape", function(req, res) {
   
-    axios.get("https://www.theonion.com").then(function(response) {
+    axios.get("https://www.echojs.com").then(function(response) {
       var $ = cheerio.load(response.data);
       $("article h2").each(function(i, element) {
         var result = {};
