@@ -1,19 +1,83 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Onion Scraper</title>
-    
-  </head>
-  <body>
+<meta charset="UTF-8">
+<title>Scraping With Mongoose</title>
+<style>
+    h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-align: center;
+        font-size: 72px;
+    }
+
+    h2 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-align: center;
+    }
+
+    h4 {
+        color: #ffffff
+    }
+
+    button {
+        align-content: center;
+        text-align: center;
+    }
+
+    body {
+        background-color: #006b3a
+    }
+
+    #wrapper {
+        width: 960px;
+
+    }
+
+    #articles {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #ffffff;
+        width: 50%;
+        height: 700px;
+    }
+
+    #notes {
+        width: 50%;
+        font-family: Arial, Helvetica, sans-serif;
+        position: sticky;
+        float: right;
+        margin-right: 25px;
+    }
+
+    textarea,
+    input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+    }
+
+    input {
+        height: 36px;
+        font-size: 24px;
+    }
+
+    textarea {
+        height: 200px;
+        font-size: 18px;
+    }
+</style>
+</head>
+
+<body>
+
+    <h1>Onion Scraper</h1>
+    <h2>Latest headlines</h2>
+    <a href="/scrape"> <button>Scrape new articles?</button> </a>
+    <div id="notes"></div>
     <div id="wrapper">
-      <h1>Scraper</h1>
-      
-      <h2><i>Articles will appear here</i></h2>
-      <div id="articles"></div>
-      <div id="notes"></div>
+        <div id="articles"></div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
-  </body>
+</body>
+
 </html>

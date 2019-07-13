@@ -39,9 +39,7 @@ app.get("/scrape", function(req, res) {
           results.link = $(this)
             .find("a")
             .attr("href");
-          results.image = $(this)
-            .find("img")
-            .attr("src");
+        
 
 
 
