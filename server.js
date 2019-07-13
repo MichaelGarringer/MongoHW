@@ -19,7 +19,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-//If on heroku use deployed database if local
+//If on heroku use deployed database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI);
 
@@ -27,17 +27,25 @@ mongoose.connect(MONGODB_URI);
 //Scrape 
 app.get("/scrape", function(req, res) {
   
-    axios.get("https://www.echojs.com").then(function(response) {
-      var $ = cheerio.load(response.data);
-      $("article h2").each(function(i, element) {
-        var result = {};
-        result.title = $(this)
-          .children("a")
-          .text();
-        result.link = $(this)
-          .children("a")
-          .attr("href");
-        db.Article.create(result)
+    axios.get("https://www.theonion.com/").then(function(response) {
+        var $ = cheerio.load(response.data);
+    
+        // var results = [];
+        var results = {};
+        $("article").each(function() {
+          results.title = $(this)
+            .find("h1")
+            .text();
+          results.link = $(this)
+            .find("a")
+            .attr("href");
+          results.image = $(this)
+            .find("img")
+            .attr("src");
+
+
+
+        db.Article.create(results)
           .then(function(dbArticle) {
             console.log(dbArticle);
           })
