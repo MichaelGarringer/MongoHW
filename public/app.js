@@ -29,7 +29,7 @@ $.getJSON("/articles", function(data) {
         $("#notes").append("<h4>" + data.title + "</h4>");
         $("#notes").append("<input id='titleinput' name='title' >" + "</br>");      
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-        $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+        $("#notes").append("<button class='btn btn-dark' data-id='" + data._id + "' id='savenote'>Save Note</button>");
   
         if (data.note) {
           $("#titleinput").val(data.note.title);
